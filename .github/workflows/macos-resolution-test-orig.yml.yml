@@ -1,0 +1,26 @@
+name: macos-resolution-test
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  run_macos_resolution_check:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: old screen resolution
+        run: system_profiler SPDisplaysDataType | grep Resolution
+       
+      - name: change screen resolution
+        id: demo
+        run: |
+          "/Library/Application Support/VMware Tools/vmware-resolutionSet" 2560 1440
+          sleep 5
+                    
+      - name: new screen resolution
+        run: system_profiler SPDisplaysDataType | grep Resolution
