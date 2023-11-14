@@ -13,10 +13,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: old screen resolution
-        run: |
-          sleep 2
-          system_profiler SPDisplaysDataType | grep Resolution
+#      - name: old screen resolution
+#        run: |
+#          sleep 2
+#          system_profiler SPDisplaysDataType | grep Resolution
        
       - name: change screen resolution
         id: demo
