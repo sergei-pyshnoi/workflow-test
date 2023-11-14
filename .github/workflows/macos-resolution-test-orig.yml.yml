@@ -14,7 +14,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: old screen resolution
-        run: system_profiler SPDisplaysDataType | grep Resolution
+        run: |
+          sleep 2
+          system_profiler SPDisplaysDataType | grep Resolution
        
       - name: change screen resolution
         id: demo
