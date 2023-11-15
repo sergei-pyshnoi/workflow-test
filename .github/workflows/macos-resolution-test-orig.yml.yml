@@ -22,6 +22,7 @@ jobs:
         id: demo
         run: |
           "/Library/Application Support/VMware Tools/vmware-resolutionSet" 2560 1440
+          sleep 2
                     
       - name: new screen resolution
         run: system_profiler SPDisplaysDataType | grep Resolution
