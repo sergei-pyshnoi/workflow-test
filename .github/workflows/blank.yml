@@ -18,4 +18,4 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - run: |
-            echo $PATH
+            echo $Env:Path
