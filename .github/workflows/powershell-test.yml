@@ -20,5 +20,5 @@ jobs:
       - name: Run a multi-line script
         shell: powershell
         run: |
-          Writee-Host 'Error'
+          curl -asd
           Write-Host 'Test'
