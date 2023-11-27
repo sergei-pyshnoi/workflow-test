@@ -16,6 +16,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Enable feature
+        shell: pwsh
+        run: Enable-ExperimentalFeature PSNativeCommandErrorActionPreference
 
       - name: Run a multi-line script
         shell: pwsh
