@@ -39,6 +39,6 @@ jobs:
       if: always()
     - name: Check WSL http connection to store.rg-adguard.net
       shell: wsl-bash {0}
-      run: wsl http -fp HBh POST https://store.rg-adguard.net/api/GetFiles type=ProductId url=9p804crf0395
+      run: http -fp HBh POST https://store.rg-adguard.net/api/GetFiles type=ProductId url=9p804crf0395
       if: always()
 
