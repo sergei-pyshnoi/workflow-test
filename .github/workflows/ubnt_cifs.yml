@@ -1,0 +1,25 @@
+# This is a basic workflow to help you get started with Actions
+
+name: ubnt-cifs
+
+# Controls when the workflow will run
+on:
+
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Grep CIFS module BEFORE modprobe
+        run: sudo dmesg | grep CIFS
+
+      - name: Enable CIFS using modbrobe
+        run: sudo modprobe cifs
+
+      - name: Grep CIFS module AFTER modprobe
+        run: sudo dmesg | grep CIFS
