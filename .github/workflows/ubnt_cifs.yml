@@ -16,10 +16,9 @@ jobs:
     steps:
 
       - name: Grep CIFS module BEFORE modprobe
-        run: sudo dmesg | grep CIFS
-
+        run: sudo dmesg 
       - name: Enable CIFS using modbrobe
         run: sudo modprobe cifs
 
       - name: Grep CIFS module AFTER modprobe
-        run: sudo dmesg | grep CIFS
+        run: sudo dmesg 
