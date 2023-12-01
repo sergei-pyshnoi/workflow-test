@@ -16,10 +16,5 @@ jobs:
     steps:
       - name: Install cifs-utils
         run: sudo apt update -y && sudo apt install -y linux-modules-extra-azure
-      - name: Grep CIFS module BEFORE modprobe
-        run: sudo dmesg | grep CIFS
-      - name: Enable CIFS using modbrobe
-        run: sudo modprobe cifs
-
-      - name: Grep CIFS module AFTER modprobe
-        run: sudo dmesg | grep CIFS
+      - name: show mount
+        run: mount
