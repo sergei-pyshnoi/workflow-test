@@ -14,7 +14,9 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
+      - name: show lsmod before
+        run: lsmod | grep cifs
       - name: Install cifs-utils
         run: sudo apt update -y && sudo apt install -y linux-modules-extra-azure
-      - name: show mount
-        run: mount
+      - name: show lsmod
+        run: lsmod | grep cifs
