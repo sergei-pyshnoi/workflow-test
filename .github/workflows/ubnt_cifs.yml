@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: show lsmod before
-        run: lsmod | grep cifs
-      - name: Install cifs-utils
+        run: lsmod 
+      - name: Install linux-modules-extra-azure
         run: sudo apt update -y && sudo apt install -y linux-modules-extra-azure
       - name: show lsmod
-        run: lsmod | grep cifs
+        run: lsmod
