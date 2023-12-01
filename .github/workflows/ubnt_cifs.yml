@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: show lsmod before
         run: lsmod 
-      - name: Install linux-modules-extra-azure
-        run: sudo apt update -y && sudo apt install -y linux-modules-extra-azure
+      - name: Install cifs-utils
+        run: sudo apt update -y && sudo apt install -y cifs-utils
       - name: show lsmod
         run: lsmod
