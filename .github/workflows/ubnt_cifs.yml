@@ -16,8 +16,6 @@ jobs:
     steps:
       - name: show lsmod before
         run: lsmod 
-      - name: Install cifs-utils
-        run: sudo apt update -y && sudo apt install -y cifs-utils
       - name: run modbrobe
         run: sudo modprobe cifs
       - name: show lsmod
