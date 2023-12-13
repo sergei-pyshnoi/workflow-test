@@ -14,9 +14,6 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
-      - name: show lsmod before
-        run: lsmod 
-      - name: run modbrobe
-        run: sudo modprobe cifs
-      - name: show lsmod
-        run: lsmod
+      - name: netstat
+        run: sudo netstat -lpn
+
