@@ -17,9 +17,7 @@ jobs:
 
       - name: netstat
         run: |
-         Write-Host "Search 500"
-         netstat -an | Select-String "500"
-         Write-host "Search 4500"
-         netstat -an | Select-String "4500"
+         netstat -an
+    
          
 
