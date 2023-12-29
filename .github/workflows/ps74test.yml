@@ -27,7 +27,7 @@ jobs:
         sudo dpkg -i packages-microsoft-prod.deb
         sudo apt-get update
 
-        sudo apt-get install -y powershell=7.4.0-1.debd
+        sudo apt-get install -y powershell=7.4.0-1.deb
 
     - name: Verify PowerShell installation
       run: pwsh --version
