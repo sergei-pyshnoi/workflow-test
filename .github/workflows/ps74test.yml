@@ -33,4 +33,4 @@ jobs:
       run: pwsh --version
 
     - name: Run PowerShell script
-      run: .\progressTest.ps1
+      run: pwsh -File progressTest.ps1
