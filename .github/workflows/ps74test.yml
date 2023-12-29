@@ -11,6 +11,7 @@ on:
 jobs:
   install-powershell:
     runs-on: ubuntu-latest
+    steps:
 
     - name: Install PowerShell
       run: |
