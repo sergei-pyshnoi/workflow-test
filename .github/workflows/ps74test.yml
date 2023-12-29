@@ -34,3 +34,14 @@ jobs:
 
     - name: Run PowerShell script
       run: pwsh -File progressTest.ps1
+
+    - name: downgrade PowerShell
+      run: |
+        sudo apt-get remove powershell
+        sudo apt-get install -y powershell=7.2.17-1.deb
+  
+    - name: Verify PowerShell installation
+      run: pwsh --version
+
+    - name: Run PowerShell script
+      run: pwsh -File progressTest.ps1
