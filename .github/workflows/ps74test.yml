@@ -1,0 +1,34 @@
+# This is a basic workflow to help you get started with Actions
+
+name: powershell 7.4 test
+
+# Controls when the workflow will run
+on:
+
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  install-powershell:
+    runs-on: ubuntu-latest
+
+    - name: Install PowerShell
+      run: |
+        # Установка зависимостей
+        sudo apt-get update
+        sudo apt-get install -y \
+          curl \
+          apt-transport-https \
+          ca-certificates \
+          software-properties-common
+
+        # Добавление репозитория PowerShell
+        curl https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -o packages-microsoft-prod.deb
+        sudo dpkg -i packages-microsoft-prod.deb
+        sudo apt-get update
+
+        # Установка PowerShell 7.4
+        sudo apt-get install -y powershell=7.4.0-1.ubuntu.20.04
+
+    - name: Verify PowerShell installation
+      run: pwsh --version
