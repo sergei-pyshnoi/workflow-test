@@ -13,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
     - name: Remove Powershell
       run: sudo apt-get remove powershell
 
@@ -30,25 +33,4 @@ jobs:
       run: pwsh --version
 
     - name: Run PowerShell script
-      run: |
-        param (
-            [int]$TotalCount = 50
-        )
-
-        function My-LongRunningTask {
-            param (
-                [int]$Total
-            )
-
-            for ($i = 1; $i -le $Total; $i++) {
-                Start-Sleep -Seconds 1
-                Write-Progress -PercentComplete (($i / $Total) * 100) -Status "Processing Item $i/$Total"
-            }
-        }
-
-        My-LongRunningTask -Total $TotalCount -ProgressAction {
-            param ($ProgressRecord)
-            Write-Host "Progress: $($ProgressRecord.PercentComplete)% - $($ProgressRecord.Status)"
-        }
-
-        Write-Host "Task completed."
+      run: progressTest.ps1
