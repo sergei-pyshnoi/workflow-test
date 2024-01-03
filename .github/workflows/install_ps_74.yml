@@ -31,6 +31,10 @@ jobs:
         $env:Path = "$extractPath;$env:Path"
         Write-host $env:Path
 
+    - name: Update Environment for Current Session
+      run: |
+        [System.Environment]::SetEnvironmentVariable('Path', $env:Path, [System.EnvironmentVariableTarget]::Process)
+
     - name: Verify PowerShell version
       run: |
         pwsh --version
