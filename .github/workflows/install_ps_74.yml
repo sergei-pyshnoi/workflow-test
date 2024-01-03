@@ -1,0 +1,32 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Install PowerShell 7.4
+
+
+on:
+
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  install-powershell:
+    runs-on: windows-latest
+
+    steps:
+    - name: Check PowerShell version
+      id: check-powershell
+      run: |
+        $currentVersion = $PSVersionTable.PSVersion.Major
+        Write-Output "Current PowerShell version: $currentVersion"
+  
+    - name: Download and Install PowerShell 7.4
+      run: |
+        $url = "https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.msi"
+        $installerPath = "$env:TEMP\PowerShell-7.4.0-win-x64.msi"
+        Invoke-WebRequest -Uri $url -OutFile $installerPath
+        Start-Process msiexec -ArgumentList "/i $installerPath /qn /quiet /norestart" -Wait
+
+    - name: Verify PowerShell version
+      run: |
+        $installedVersion = $PSVersionTable.PSVersion.Major
+        Write-Output "Installed PowerShell version: $installedVersion"
