@@ -20,11 +20,15 @@ jobs:
         Write-Output "Current PowerShell version: $currentVersion"
   
     - name: Download and Install PowerShell 7.4
+      if: steps.check-powershell.outcome == 'success'
       run: |
-        $url = "https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.msi"
-        $installerPath = "$env:TEMP\PowerShell-7.4.0-win-x64.msi"
-        Invoke-WebRequest -Uri $url -OutFile $installerPath
-        Start-Process msiexec -ArgumentList "/i $installerPath /qn /norestart" -Wait
+        $url = "https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.zip"
+        $downloadPath = "$env:TEMP\PowerShell-7.4.0-win-x64.zip"
+        $extractPath = "C:\Program Files\PowerShell\7.4"
+
+        Invoke-WebRequest -Uri $url -OutFile $downloadPath
+        Expand-Archive -Path $downloadPath -DestinationPath $extractPath -Force
+        $env:Path = "$extractPath;$env:Path"
 
     - name: Verify PowerShell version
       run: |
