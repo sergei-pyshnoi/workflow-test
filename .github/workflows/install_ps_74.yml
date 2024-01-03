@@ -29,6 +29,7 @@ jobs:
         Invoke-WebRequest -Uri $url -OutFile $downloadPath
         Expand-Archive -Path $downloadPath -DestinationPath $extractPath -Force
         $env:Path = "$extractPath;$env:Path"
+        Write-host $env:Path
 
     - name: Verify PowerShell version
       run: |
