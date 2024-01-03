@@ -24,7 +24,7 @@ jobs:
         $url = "https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.msi"
         $installerPath = "$env:TEMP\PowerShell-7.4.0-win-x64.msi"
         Invoke-WebRequest -Uri $url -OutFile $installerPath
-        Start-Process msiexec -ArgumentList "/i $installerPath /qn /quiet /norestart" -Wait
+        Start-Process msiexec -ArgumentList "/i $installerPath /qn /norestart" -Wait
 
     - name: Verify PowerShell version
       run: |
