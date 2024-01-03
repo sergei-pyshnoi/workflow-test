@@ -32,5 +32,7 @@ jobs:
 
     - name: Verify PowerShell version
       run: |
+        pwsh --version
+        pwsh
         $installedVersion = $PSVersionTable.PSVersion
         Write-Output "Installed PowerShell version: $installedVersion"
