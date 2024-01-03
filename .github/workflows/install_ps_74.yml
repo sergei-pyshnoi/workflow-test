@@ -30,7 +30,11 @@ jobs:
         Expand-Archive -Path $downloadPath -DestinationPath $extractPath -Force
         $env:Path = "$extractPath;$env:Path"
         Write-host $env:Path
-        [System.Environment]::SetEnvironmentVariable('Path', $env:Path, [System.EnvironmentVariableTarget]::Process)
+     
+        $newPath = "$extractPath;$env:Path"
+        [System.Environment]::SetEnvironmentVariable('Path', $newPath, [System.EnvironmentVariableTarget]::Process)
+        
+        Add-Content -Path $profile -Value "`$env:Path = \"$newPath\""
 
     - name: Verify PowerShell version
       run: |
