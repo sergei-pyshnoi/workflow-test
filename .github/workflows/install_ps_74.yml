@@ -16,7 +16,7 @@ jobs:
     - name: Check PowerShell version
       id: check-powershell
       run: |
-        $currentVersion = $PSVersionTable.PSVersion.Major
+        $currentVersion = $PSVersionTable.PSVersion
         Write-Output "Current PowerShell version: $currentVersion"
   
     - name: Download and Install PowerShell 7.4
@@ -32,5 +32,5 @@ jobs:
 
     - name: Verify PowerShell version
       run: |
-        $installedVersion = $PSVersionTable.PSVersion.Major
+        $installedVersion = $PSVersionTable.PSVersion
         Write-Output "Installed PowerShell version: $installedVersion"
