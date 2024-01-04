@@ -23,12 +23,10 @@ jobs:
     - name: Download and Install PowerShell 7.4
       shell: cmd
       run: |
-        set "url=https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.zip"
-        set "downloadPath=%TEMP%\PowerShell-7.4.0-win-x64.zip"
         set "extractPath=C:\Program Files\PowerShell\7"
-        curl -o "%downloadPath%" "%url%"
-        RMDIR "C:\Program Files\PowerShell\7" /S /Q
-        expand "%downloadPath%" -F:* "%extractPath%"
+        curl -sLO https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.zip
+        RMDIR "%extractPath%" /S /Q
+        expand PowerShell-7.4.0-win-x64.zip -F:* "%extractPath%"
         del "%downloadPath%"
         
 
