@@ -20,30 +20,20 @@ jobs:
         Write-Output "Current PowerShell version: $currentVersion"
   
     - name: Download and Install PowerShell 7.4
-      if: steps.check-powershell.outcome == 'success'
       run: |
-        $url = "https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.zip"
-        $downloadPath = "$env:TEMP\PowerShell-7.4.0-win-x64.zip"
-        $extractPath = "C:\Program Files\PowerShell\7.4"
-
-        Invoke-WebRequest -Uri $url -OutFile $downloadPath
-        Expand-Archive -Path $downloadPath -DestinationPath $extractPath -Force
-        $env:Path = "$extractPath;$env:Path"
-        Write-host $env:Path
+        set "url=https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.zip"
+        set "downloadPath=%TEMP%\PowerShell-7.4.0-win-x64.zip"
+        set "extractPath=C:\Program Files\PowerShell\7"
+        curl -o "%downloadPath%" "%url%"
+        RMDIR "C:\Program Files\PowerShell\7" /S /Q
+        expand "%downloadPath%" -F:* "%extractPath%"
+        del "%downloadPath%"
         
-        Get-ChildItem "C:\Program Files\PowerShell\7.4"
-        
-        $newPath = "$extractPath;$env:Path"
-        [System.Environment]::SetEnvironmentVariable('Path', $newPath, [System.EnvironmentVariableTarget]::Process)
-        
-
-    - name: Remove old PS
-      shell: cmd
-      run: RMDIR "C:\Program Files\PowerShell\7" /S /Q
 
     - name: Verify PowerShell version
       run: |
+        Write-Output "Current PowerShell version: $currentVersion"
+        $currentVersion = $PSVersionTable.PSVersion
         pwsh --version
-        pwsh
         $installedVersion = $PSVersionTable.PSVersion
         Write-Output "Installed PowerShell version: $installedVersion"
