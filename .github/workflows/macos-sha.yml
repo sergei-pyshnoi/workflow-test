@@ -26,5 +26,11 @@ jobs:
            curl -L -o powershell.pkg https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershell-7.4.0-osx-x64.pkg
            sudo installer -pkg powershell.pkg -target /
            pwsh --version
+
+      - name: downgrade pwsh
+        run: |
+           curl -L -o powershell.pkg https://github.com/PowerShell/PowerShell/releases/download/v7.2.17/powershell-7.2.17-osx-x64.pkg
+           sudo installer -pkg powershell.pkg -target /
+           pwsh --version
            
 
