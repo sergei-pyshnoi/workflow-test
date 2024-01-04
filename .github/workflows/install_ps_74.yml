@@ -14,12 +14,13 @@ jobs:
 
     steps:
     - name: Check PowerShell version
-      id: check-powershell
       run: |
+        pwsh --version
         $currentVersion = $PSVersionTable.PSVersion
         Write-Output "Current PowerShell version: $currentVersion"
   
     - name: Download and Install PowerShell 7.4
+      shell: cmd
       run: |
         set "url=https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.zip"
         set "downloadPath=%TEMP%\PowerShell-7.4.0-win-x64.zip"
@@ -32,8 +33,6 @@ jobs:
 
     - name: Verify PowerShell version
       run: |
-        Write-Output "Current PowerShell version: $currentVersion"
-        $currentVersion = $PSVersionTable.PSVersion
         pwsh --version
         $installedVersion = $PSVersionTable.PSVersion
         Write-Output "Installed PowerShell version: $installedVersion"
