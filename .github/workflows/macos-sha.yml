@@ -21,8 +21,10 @@ jobs:
     runs-on: macos-latest
 
     steps:
-
-      - name: check dir
+      - name: downgrade pwsh
         run: |
-           ls /usr/local/bin/pwsh
+           curl -L -o powershell.pkg https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershell-7.4.0-osx-x64.pkg
+           sudo installer -pkg powershell.pkg -target /
+           pwsh --version
+           
 
