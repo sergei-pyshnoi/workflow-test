@@ -17,6 +17,7 @@ jobs:
       run: |
         pwsh --version
         Get-ChildItem "C:\Program Files\PowerShell\7"
+        Get-ChildItem "c:\program files\powershell\7\Modules"
         $currentVersion = $PSVersionTable.PSVersion
         Write-Output "Current PowerShell version: $currentVersion"
   
