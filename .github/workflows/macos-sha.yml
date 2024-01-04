@@ -23,5 +23,6 @@ jobs:
     steps:
 
       - name: check dir
-        run: which pwsh
+        run: |
+           ls /usr/local/bin/pwsh
 
