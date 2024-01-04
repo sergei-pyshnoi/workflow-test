@@ -16,6 +16,7 @@ jobs:
     - name: Check PowerShell version
       run: |
         pwsh --version
+        Get-ChildItem "C:\Program Files\PowerShell\7"
         $currentVersion = $PSVersionTable.PSVersion
         Write-Output "Current PowerShell version: $currentVersion"
   
@@ -33,6 +34,7 @@ jobs:
 
     - name: Verify PowerShell version
       run: |
+        Get-ChildItem "C:\Program Files\PowerShell\7"
         pwsh --version
         $installedVersion = $PSVersionTable.PSVersion
         Write-Output "Installed PowerShell version: $installedVersion"
