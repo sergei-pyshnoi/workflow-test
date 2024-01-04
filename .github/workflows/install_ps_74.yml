@@ -30,11 +30,16 @@ jobs:
         Expand-Archive -Path $downloadPath -DestinationPath $extractPath -Force
         $env:Path = "$extractPath;$env:Path"
         Write-host $env:Path
-     
+        
+        Get-ChildItem "C:\Program Files\PowerShell\7.4"
+        
         $newPath = "$extractPath;$env:Path"
         [System.Environment]::SetEnvironmentVariable('Path', $newPath, [System.EnvironmentVariableTarget]::Process)
         
-        Add-Content -Path $profile -Value "`$env:Path = \"$newPath\""
+
+    - name: Remove old PS
+      shell: cmd
+      run: RMDIR "C:\Program Files\PowerShell\7" /S /Q
 
     - name: Verify PowerShell version
       run: |
