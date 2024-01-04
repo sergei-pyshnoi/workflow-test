@@ -26,8 +26,7 @@ jobs:
         set "extractPath=C:\Program Files\PowerShell\7"
         curl -sLO https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.zip
         RMDIR "%extractPath%" /S /Q
-        expand PowerShell-7.4.0-win-x64.zip -F:* "%extractPath%"
-        del "%downloadPath%"
+        7z x powershell-7.4.0-win-x64.zip -o"%extractPath%"
         
 
     - name: Verify PowerShell version
