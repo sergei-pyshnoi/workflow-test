@@ -13,13 +13,6 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Check PowerShell version
-      run: |
-        pwsh --version
-        Get-ChildItem "C:\Program Files\PowerShell\7"
-        Get-ChildItem "c:\program files\powershell\7\Modules"
-        $currentVersion = $PSVersionTable.PSVersion
-        Write-Output "Current PowerShell version: $currentVersion"
   
     - name: Download and Install PowerShell 7.4
       shell: cmd
@@ -28,16 +21,8 @@ jobs:
         curl -sLO https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.zip
         RMDIR "%extractPath%" /S /Q
         7z x powershell-7.4.0-win-x64.zip -o"%extractPath%"
-        
-
-    - name: Verify PowerShell version 7.4
-      run: |
-        $env:PSModulePath
-        Get-ChildItem "C:\Program Files\PowerShell\7"
-        Get-ChildItem "c:\program files\powershell\7\Modules"
         pwsh --version
-        $installedVersion = $PSVersionTable.PSVersion
-        Write-Output "Installed PowerShell version: $installedVersion"
+
 
     - name: Download and Install PowerShell 7.2
       shell: cmd
@@ -45,13 +30,6 @@ jobs:
         set "extractPath=C:\Program Files\PowerShell\7"
         curl -sLO https://github.com/PowerShell/PowerShell/releases/download/v7.2.17/PowerShell-7.2.17-win-x64.zip
         RMDIR "%extractPath%" /S /Q
-        7z x powershell-7.4.0-win-x64.zip -o"%extractPath%"
-
-    - name: Verify PowerShell version 7.2
-      run: |
-        $env:PSModulePath
-        Get-ChildItem "C:\Program Files\PowerShell\7"
-        Get-ChildItem "c:\program files\powershell\7\Modules"
+        7z x PowerShell-7.2.17-win-x64.zip -o"%extractPath%"
         pwsh --version
-        $installedVersion = $PSVersionTable.PSVersion
-        Write-Output "Installed PowerShell version: $installedVersion"
+
