@@ -17,3 +17,17 @@ jobs:
         run: |
           sqlite3 $HOME/Library/Application\ Support/com.apple.TCC/TCC.db "SELECT * FROM access;"
 
+      - name: Play a sound
+        timeout-minutes: 3
+        run: |
+          (sleep 10; screencapture debugscreen_${{ matrix.runner }}.png) &
+          afplay /System/Library/Sounds/Funk.aiff
+          sleep 20
+
+      - name: Publish debug screenshot
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debugscreen.png
+          path: debugscreen.png
+
