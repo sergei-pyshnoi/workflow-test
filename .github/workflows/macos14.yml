@@ -19,7 +19,7 @@ jobs:
 
       - name: Grant microphone access
         run: |
-          sqlite3 $HOME/Library/Application\ Support/com.apple.TCC/TCC.db "INSERT OR IGNORE INTO access VALUES ('kTCCServiceMicrophone','/usr/local/opt/runner/provisioner/provisioner',1,2,4,1,NULL,NULL,0,'UNUSED',NULL,0,1687786159);"
+          sqlite3 $HOME/Library/Application\ Support/com.apple.TCC/TCC.db "INSERT OR IGNORE INTO access VALUES ('kTCCServiceMicrophone','/usr/local/opt/runner/provisioner/provisioner',1,2,4,1,NULL,NULL,0,'UNUSED',NULL,0,1687786159,NULL,NULL,UNUSED,1687786159);"
     
       - name: Show tccDB after change
         run: |
@@ -28,7 +28,7 @@ jobs:
       - name: Play a sound
         timeout-minutes: 3
         run: |
-          (sleep 10; screencapture debugscreen_${{ matrix.runner }}.png) &
+          (sleep 10; screencapture debugscreen.png) &
           afplay /System/Library/Sounds/Funk.aiff
           sleep 20
 
