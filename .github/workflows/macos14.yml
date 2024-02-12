@@ -17,6 +17,14 @@ jobs:
         run: |
           sqlite3 $HOME/Library/Application\ Support/com.apple.TCC/TCC.db "SELECT * FROM access;"
 
+      - name: Grant microphone access
+        run: |
+          sqlite3 $HOME/Library/Application\ Support/com.apple.TCC/TCC.db "INSERT INTO access (service, client, client_type, allowed, prompt_count, csreq, policy_id) VALUES ('kTCCServiceMicrophone', '/usr/local/opt/runner/provisioner/provisioner', '0', '1', '1', '', NULL);"
+    
+      - name: Show tccDB after change
+        run: |
+          sqlite3 $HOME/Library/Application\ Support/com.apple.TCC/TCC.db "SELECT * FROM access;"
+
       - name: Play a sound
         timeout-minutes: 3
         run: |
