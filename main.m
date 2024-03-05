@@ -6,22 +6,8 @@ int main(int argc, const char * argv[]) {
         SecKeychainRef defaultKeychain = NULL;
         OSStatus status = SecKeychainCopyDefault(&defaultKeychain);
         if (status == errSecSuccess) {
-            UInt32 pathLength = 0;
-            char *path = NULL;
-            status = SecKeychainGetPath(defaultKeychain, &pathLength, NULL);
-            if (status == errSecSuccess) {
-                path = malloc(pathLength);
-                status = SecKeychainGetPath(defaultKeychain, &pathLength, path);
-                if (status == errSecSuccess) {
-                    NSString *keychainPath = [NSString stringWithUTF8String:path];
-                    NSLog(@"Default keychain path: %@", keychainPath);
-                } else {
-                    NSLog(@"Error getting default keychain path: %d", (int)status);
-                }
-                free(path);
-            } else {
-                NSLog(@"Error getting default keychain path length: %d", (int)status);
-            }
+            NSLog(@"Default keychain found");
+            // Use the default keychain here, e.g., list items, add items, etc.
             CFRelease(defaultKeychain);
         } else {
             NSLog(@"Error finding default keychain: %d", (int)status);
