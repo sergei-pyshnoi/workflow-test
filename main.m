@@ -6,12 +6,12 @@ int main(int argc, const char * argv[]) {
         SecKeychainRef defaultKeychain = NULL;
         OSStatus status = SecKeychainCopyDefault(&defaultKeychain);
         if (status == errSecSuccess) {
-            CFStringRef keychainName = NULL;
-            status = SecKeychainGetPath(defaultKeychain, &keychainName);
+            CFStringRef keychainPath = NULL;
+            status = SecKeychainCopyPath(defaultKeychain, &keychainPath);
             if (status == errSecSuccess) {
-                NSString *name = (__bridge NSString *)keychainName;
-                NSLog(@"Default keychain name: %@", name);
-                CFRelease(keychainName);
+                NSString *path = (__bridge NSString *)keychainPath;
+                NSLog(@"Default keychain path: %@", path);
+                CFRelease(keychainPath);
             } else {
                 NSLog(@"Error getting default keychain path: %d", (int)status);
             }
