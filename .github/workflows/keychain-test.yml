@@ -11,7 +11,11 @@ on:
 jobs:
   build:
     runs-on: macos-latest
-    steps:   
+    steps:
+
+      - name: list keychain before adding
+        run: security list-keychains
+
       - name: Set up keychain
         run: |
           security create-keychain -p test build.keychain
@@ -21,3 +25,6 @@ jobs:
       - name: Run your application
         run: |
           echo "Default keychain is set to: $(security default-keychain)"
+
+      - name: list keychain after adding
+        run: security list-keychains
