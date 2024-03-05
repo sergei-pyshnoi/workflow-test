@@ -10,8 +10,15 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-12
     steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set Xcode 14.0.1 as default
+        shell: bash
+        run: sudo xcode-select -s /Applications/Xcode_14.0.1.app/Contents/Developer
 
       - name: list keychain before adding
         run: security list-keychains
@@ -28,3 +35,8 @@ jobs:
 
       - name: list keychain after adding
         run: security list-keychains
+
+      - name: Build and run application
+        run: |
+          clang -framework Foundation -framework Security main.m -o keychain_example
+          ./keychain_example
