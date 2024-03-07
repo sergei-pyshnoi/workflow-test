@@ -1,0 +1,52 @@
+# This is a basic workflow to help you get started with Actions
+
+name: python-test
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    strategy:
+      matrix:
+        os: ['macos-13-xlarge', 'macos-13']
+    # The type of runner that the job will run on
+    runs-on: ${{ matrix.os }}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+#    - name: run pester tests (windows)
+#      continue-on-error: true
+#      shell: powershell
+#      if: runner.os == 'Windows'
+#      env:
+#        IMAGE_FOLDER: C:\image
+#        AGENT_TOOLSDIRECTORY: C:\hostedtoolcache\windows
+#      run: |
+#        Write-host $envAGENT_TOOLSDIRECTORY
+#        $CodeQLVersionsWildcard = Join-Path $env:AGENT_TOOLSDIRECTORY -ChildPath "CodeQL" | Join-Path -ChildPath "*"
+#        Write-host $CodeQLVersionsWildcard
+#        $CodeQLVersionPath = Get-ChildItem $CodeQLVersionsWildcard
+#        Write-host $CodeQLVersionPath
+#        C:\\image\\Tests\\RunAll-Tests.ps1
+
+#    - name: run pester tests (ubuntu)
+#      continue-on-error: true
+#      shell: pwsh
+#      if: runner.os == 'Linux'
+#      env:
+#        INSTALLER_SCRIPT_FOLDER: /imagegeneration/installers
+#      run: |
+#        Write-Host $env:INSTALLER_SCRIPT_FOLDER
+#        /imagegeneration/tests/RunAll-Tests.ps1
+
+    - name: srun pester tests (macos)
+      env:
+        IMAGE_FOLDER: /Users/runner/image-generation
+      run: echo $PATH
+      #  /Users/runner/image-generation/tests/RunAll-Tests.ps1
