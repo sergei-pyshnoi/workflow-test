@@ -19,6 +19,7 @@ jobs:
     steps:
 
       - name: check TLS
+        shell: powershell
         run: |
           $output =  [Net.ServicePointManager]::SecurityProtocol -band "Tls12"
           Write-Host $output
