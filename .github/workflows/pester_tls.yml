@@ -22,5 +22,6 @@ jobs:
         run: |
           $output =  [Net.ServicePointManager]::SecurityProtocol -band "Tls12"
           Write-Host $output
+          [Net.ServicePointManager]::SecurityProtocol
 
 
