@@ -15,6 +15,6 @@ jobs:
     steps:
       - name: Run a multi-line script
         run: |
-          apt-get update
-          apt-get install jq -y
+          sudo apt-get update
+          sudo apt-get install jq -y
           jq --version
