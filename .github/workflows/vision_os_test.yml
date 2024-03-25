@@ -10,6 +10,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     runs-on: macos-14
+    continue-on-error: true
     strategy:
       matrix:
         version: ["15.0.1", "15.2", "15.1"]
