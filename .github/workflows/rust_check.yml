@@ -18,3 +18,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name:  rust check
         run: rustup toolchain list
+
+      - name:  ustup toolchain add 1.76
+        run: rustup toolchain list
+
+      - name:  rust check
+        run: rustup toolchain list
