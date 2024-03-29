@@ -1,0 +1,27 @@
+# This is a basic workflow to help you get started with Actions
+
+name: flutter
+
+# Controls when the workflow will run
+on:
+
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  ubuntu_flatter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: sudo snap install flutter --classic
+
+
+  macos_flatter:
+    strategy:
+      matrix:
+        os: ["macos-12", "macos-13-xlarge", "macos-14"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Run a one-line script
+        run: brew install --cask flutter
