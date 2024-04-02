@@ -17,5 +17,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Run a one-line script
-        run: pipx install pycowsay
+        run: |
+          export PIPX_BIN_DIR="$HOME/.local/bin"
+          export PIPX_HOME="$HOME/Library/Application Support/pipx"
+          pipx install pycowsay
 
