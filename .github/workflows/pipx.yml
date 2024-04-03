@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Run a one-line script
         run: |
-          export PIPX_BIN_DIR="$HOME/.local/bin"
-          export PIPX_HOME="$HOME/Library/Application Support/pipx"
+          unset PIPX_BIN_DIR
+          unset PIPX_HOME
           pipx install pycowsay
 
