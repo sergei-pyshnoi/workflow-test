@@ -1,0 +1,37 @@
+
+name: "Brew Test"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  brew_error:
+    runs-on: macos-latest
+    steps:
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: cpp
+      - name: Brew error
+        run: |
+          brew install \
+            boost \
+            cmake \
+            miniupnpc \
+            node \
+            opus \
+            pkg-config
+ 
+  brew_error_no_ql:
+    runs-on: macos-latest
+    if: ${{ always() }}
+    steps:
+      - name: Brew error
+        run: |
+          brew install \
+            boost \
+            cmake \
+            miniupnpc \
+            node \
+            opus \
+            pkg-config
