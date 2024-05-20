@@ -18,19 +18,12 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: reinstall brew
-        shell: bash
-        run: |
-           echo "Uninstalling Homebrew..."
-           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
-           echo "Installing Homebrew..."
-           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-           brew --version
+
       
 
       - name: Run a multi-line script
         shell: bash
         run: |
-          sdl_image_formula=$(brew edit --print-path sdl_image)
+          sdl_image_formula=$(brew edit --print-path jq)
           echo "--------------------------------------"
           echo $sdl_image_formula
