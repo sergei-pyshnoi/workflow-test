@@ -22,4 +22,5 @@ jobs:
       - name: Run a multi-line script
         run: |
           sdl_image_formula=$(brew edit --print-path sdl_image)
+          echo "--------------------------------------"
           echo $sdl_image_formula
