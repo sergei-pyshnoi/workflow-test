@@ -20,6 +20,7 @@ jobs:
     steps:
 
       - name: Run a multi-line script
+        shell: bash
         run: |
           sdl_image_formula=$(brew edit --print-path sdl_image)
           echo "--------------------------------------"
