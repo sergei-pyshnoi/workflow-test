@@ -25,4 +25,4 @@ jobs:
       - name: Run a multi-line script
         shell: pwsh
         run: |
-          Remove-Module Microsoft.Graph
+          Uninstall-Module Microsoft.Graph
